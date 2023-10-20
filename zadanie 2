@@ -1,0 +1,46 @@
+using System;
+
+namespace Wsei5
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                Console.WriteLine("Wprowadź liczbę lub 'q' aby wyjść:");
+                string a = Console.ReadLine();
+
+                if (a.ToLower() == "q")
+                {
+                    break;
+                }
+
+                if (double.TryParse(a, out double b))
+                {
+                    CheckIf(b);
+                }
+                else
+                {
+                    Console.WriteLine("Niepoprawne dane");
+                }
+            }
+        }
+
+        static void CheckIf(double b)
+        {
+            int c = 1;
+            double d = 1;
+            double e = 10;
+
+            while (b >= e)
+            {
+                c++;
+                d = e;
+                e = Math.Pow(10, c) + 1;
+            }
+
+            Console.WriteLine($"{b} jest w przedziale {c} od {d} do {e - 1}");
+        }
+    }
+}
