@@ -1,0 +1,35 @@
+using System;
+
+public class Test
+{
+	public static void Main()
+	{
+string input;
+        while ((input = Console.ReadLine()) != null)
+        {
+        string[] values = input.Split(' ');
+        double A = double.Parse(values[0]);
+        double B = double.Parse(values[1]);
+        double C = double.Parse(values[2]);
+
+        double discriminant = B * B - 4 * A * C;
+
+        int numberOfRoots;
+
+        if (discriminant < 0)
+        {
+         numberOfRoots = 0;
+        }
+        else if (discriminant == 0)
+        {
+          numberOfRoots = 1;
+        }
+         else
+         {
+             numberOfRoots = 2;
+         }
+
+            Console.WriteLine(numberOfRoots);
+        }
+	}
+}
