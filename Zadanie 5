@@ -1,0 +1,46 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Przykłady użycia
+        RysujWzorek(5);
+        RysujWzorek(3);
+    }
+
+    public static void RysujWzorek(int n)
+    {
+        if (n < 3)
+        {
+            Console.WriteLine("Wartość n musi być nie mniejsza niż 3.");
+            return;
+        }
+
+        // Dostosowanie n, jeśli jest parzyste
+        if (n % 2 == 0)
+        {
+            n--;
+        }
+
+        // Generowanie wzorku
+        for (int i = 1; i <= n; i += 2)
+        {
+            int liczbaSpacji = (n - i) / 2;
+
+            // Wypisanie spacji
+            for (int j = 0; j < liczbaSpacji; j++)
+            {
+                Console.Write(" ");
+            }
+
+            // Wypisanie gwiazdek
+            for (int j = 0; j < i; j++)
+            {
+                Console.Write("*");
+            }
+
+            Console.WriteLine();
+        }
+    }
+}
