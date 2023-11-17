@@ -1,0 +1,36 @@
+namespace DebuggingExercise
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Podaj liczbę: ");
+            int number = Convert.ToInt32(Console.ReadLine());
+            bool isPrime = CheckPrime(number);
+            if (isPrime)
+            {
+                Console.WriteLine(number + " jest liczbą pierwszą.");
+            }
+            else
+            {
+                Console.WriteLine(number + " nie jest liczbą pierwszą.");
+            }
+        }
+
+        static bool CheckPrime(int num)
+        {
+            if (num < 2) return false;
+
+            int sqrt = (int)Math.Sqrt(num);
+
+            for (int i = 2; i <= sqrt; i++)
+            {
+                if (num % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+}
