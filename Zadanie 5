@@ -1,0 +1,47 @@
+using System;
+
+class Program
+{
+  static void Main()
+    {
+    int[] tablica = { 5, 2, 9, 1, 5, 6 };
+
+    Console.WriteLine("Tablica przed sortowaniem:");
+    WypiszTablice(tablica);
+    Sortuj(tablica);
+    Console.WriteLine("Tablica po sortowaniu:");
+    WypiszTablice(tablica);
+    }
+
+    static void Sortuj(int[] tablica)
+    {
+    int n = tablica.Length;
+
+    for (int i = 0; i < n - 1; i++)
+    {
+    for (int j = 0; j < n - 1 - i; j++)
+     {
+      if (tablica[j] > tablica[j + 1])
+       {
+        Zamien(ref tablica[j], ref tablica[j + 1]);
+       }
+     }
+    }
+   }
+
+    static void WypiszTablice(int[] tablica)
+    {
+     foreach (var liczba in tablica)
+      {
+      Console.Write(liczba + " ");
+      }
+      Console.WriteLine();
+    }
+
+    static void Zamien(ref int a, ref int b)
+    {
+     int temp = a;
+     a = b;
+     b = temp;
+    }
+}
