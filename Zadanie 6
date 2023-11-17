@@ -1,0 +1,58 @@
+using System;
+
+namespace FibonacciExercise
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Podaj numer wyrazu ciągu Fibonacciego, który chcesz obliczyć: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Wybierz metodę obliczeń (i - iteracyjna, r - rekurencyjna): ");
+            char method = Convert.ToChar(Console.ReadLine());
+
+            if (method == 'i')
+            {
+                int result = FibonacciIterative(n);
+                Console.WriteLine("Wyraz {0} ciągu Fibonacciego to: {1}", n, result);
+            }
+            else if (method == 'r')
+            {
+                int result = FibonacciRecursive(n);
+                Console.WriteLine("Wyraz {0} ciągu Fibonacciego to: {1}", n, result);
+            }
+            else
+            {
+                Console.WriteLine("Nieznana metoda. Spróbuj ponownie.");
+            }
+        }
+
+        static int FibonacciIterative(int n)
+        {
+            if (n <= 1)
+                return n;
+
+            int fibNMinus2 = 0;
+            int fibNMinus1 = 1;
+            int fibN = 0;
+
+            for (int i=2; i<=n; i++)
+            {
+                fibN = fibNMinus1 + fibNMinus2;
+                fibNMinus2 = fibNMinus1;
+                fibNMinus1 = fibN;
+            }
+
+            return fibN;
+        }
+
+        static int FibonacciRecursive(int n)
+        {
+            if (n <= 1)
+                return n;
+
+            return FibonacciRecursive(n - 1) + FibonacciRecursive(n - 2);
+        }
+    }
+}
