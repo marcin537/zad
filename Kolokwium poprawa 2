@@ -1,0 +1,53 @@
+using System;
+
+public class BankAccount
+{
+    public string AccountNumber { get; private set; } //niemożna zmienić z zewnątrz klasy, tylko odczyt
+
+    public decimal Balance { get; private set; }
+
+    public BankAccount(string accountNumber, decimal initialBalance = 100)
+    {
+        if (string.IsNullOrWhiteSpace(accountNumber)  accountNumber.Length < 12  !IsAllDigits(accountNumber))
+        {
+            throw new ArgumentException("Invalid account number!");
+        }
+
+        AccountNumber = accountNumber;
+        Balance = initialBalance;
+    }
+
+    public void Deposit(decimal amount)
+    {
+        if (amount <= 0)
+        {
+            throw new ArgumentException("Deposit amount must be positive.");
+        }
+
+        Balance += amount;
+    }
+
+    public void Withdraw(decimal amount)
+    {
+        if (amount <= 0)
+        {
+            throw new ArgumentException("Withdrawal amount must be positive.");
+        }
+        if (amount > Balance)
+        {
+            throw new InvalidOperationException("Not enough funds for this withdrawal.");
+        }
+
+        Balance -= amount;
+    }
+
+    private bool IsAllDigits(string str) //Ta pętla przechodzi przez każdy znak (char) w przekazanym ciągu (str). W każdej iteracji zmienna c reprezentuje kolejny znak z ciągu.
+    {
+        foreach (char c in str)
+        {
+            if (!char.IsDigit(c))
+                return false;
+        }
+
+        return true;
+    }
