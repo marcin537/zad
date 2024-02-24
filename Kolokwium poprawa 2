@@ -2,7 +2,7 @@ using System;
 
 public class BankAccount
 {
-    public string AccountNumber { get; private set; } //niemożna zmienić z zewnątrz klasy, tylko odczyt
+    public string AccountNumber { get; private set; }
 
     public decimal Balance { get; private set; }
 
@@ -41,7 +41,7 @@ public class BankAccount
         Balance -= amount;
     }
 
-    private bool IsAllDigits(string str) //Ta pętla przechodzi przez każdy znak (char) w przekazanym ciągu (str). W każdej iteracji zmienna c reprezentuje kolejny znak z ciągu.
+    private bool IsAllDigits(string str)
     {
         foreach (char c in str)
         {
